@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RailwayCompany.Models.Station>
+
+@{
+    ViewData["Title"] = "Станции:";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Добавить станцию</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationWaitingtime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationRouteNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.StationId)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.StationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StationWaitingtime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StationRouteNavigation.RouteId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StationId">Редактировать</a> ||
+                <a asp-action="Delete" asp-route-id="@item.StationId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

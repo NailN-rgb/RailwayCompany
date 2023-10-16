@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RailwayCompany.Models.Route>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Маршруты</h1>
+
+<p>
+    <a asp-action="Create">Создать новый маршрут</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteDeparture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteDestination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteDeparture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RouteId">Редактировать</a> | |
+                <a asp-action="Delete" asp-route-id="@item.RouteId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

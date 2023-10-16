@@ -1,0 +1,71 @@
+﻿@model IEnumerable<RailwayCompany.Models.Person>
+
+@{
+    ViewData["Title"] = "Клиенты";
+}
+
+<h1>Клиенты</h1>
+
+<p>
+    <a class = "nav-link Active" asp-controller = "People" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFirstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSecondname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserDatebirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserContacts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserTicketNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFirstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSecondname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDatebirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserContacts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserTicketNavigation.TicketId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Дополнительно</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
